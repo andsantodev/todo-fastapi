@@ -20,3 +20,4 @@ class TarefaResposta(TarefaBase):
 class TarefaUpdate(BaseModel):
     titulo: str
     descricao: str | None = None
+    concluida: bool = False

@@ -87,16 +87,7 @@ def atualizar_tarefa(tarefa_id: int, tarefa_dados: schemas.TarefaUpdate, db: Ses
         raise HTTPException(status_code=404, detail="Tarefa não encontrada")
     tarefa.titulo = tarefa_dados.titulo
     tarefa.descricao = tarefa_dados.descricao
-    db.commit()
-    db.refresh(tarefa)
-    return tarefa
-
-@app.patch("/tarefas/{tarefa_id}/concluir", response_model=schemas.TarefaResposta)
-def concluir_tarefa(tarefa_id: int, db: Session = Depends(get_db), _: str = Depends(verificar_token)):
-    tarefa = db.query(models.Tarefa).filter(models.Tarefa.id == tarefa_id).first()
-    if not tarefa:
-        raise HTTPException(status_code=404, detail="Tarefa não encontrada")
-    tarefa.concluida = True
+    tarefa.concluida = tarefa_dados.concluida
     db.commit()
     db.refresh(tarefa)
     return tarefa
