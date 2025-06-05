@@ -49,6 +49,12 @@ Inclui autenticação simples via token e persistência de dados com PostgreSQL.
 
 ---
 
+## 🧠 Apoio no desenvolvimento
+
+Este projeto foi desenvolvido com apoio técnico do ChatGPT (OpenAI) para estruturação do backend, autenticação e uso de Docker + FastAPI de forma orientada.
+
+---
+
 ## 🛠️ Tecnologias utilizadas
   • FastAPI
   • Pydantic
