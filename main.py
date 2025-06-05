@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 import time
 
+from fastapi.middleware.cors import CORSMiddleware  # <-- Adicionado aqui
+
 from auth import verificar_token
 from database import engine, SessionLocal
 import schemas
@@ -13,6 +15,14 @@ print(">> Iniciando aplicação")
 
 app = FastAPI()
 
+# Middleware de CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://todo-fast-teste.flutterflow.app"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Tentativa de criar tabelas (com retry)
 for i in range(3):
